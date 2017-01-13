@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var btn1 = document.getElementById("btn1");
+            var btn2 = document.getElementById("btn2");
+
+
+            var newWin = null;
+            btn1.onclick = function () {
+                //第一个参数：打开的窗口的地址
+                //第二个参数:_self _blank
+                //第三个参数：窗口的属性
+                newWin = window.open("http://www.baidu.com","_blank","width=300,height=300");
+            }
+            
+            btn2.onclick = function () {
+                //把自己关了
+                newWin.close();
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="打开" id="btn1">
+<input type="button" value="关闭" id="btn2">
+
+</body>
+</html>

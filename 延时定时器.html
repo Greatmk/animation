@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="设置" id="btn1">
+<input type="button" value="清除" id="btn2">
+<script>
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+
+    var timer = null;
+
+    function Boon(){
+       alert('爆炸啦');
+    }
+
+    btn1.onclick = function(){
+        //设置一个定时器
+        timer = setTimeout(Boon,2000);
+    }
+
+    btn2.onclick = function(){
+        //清除定时器
+        clearTimeout(timer);
+    }
+
+</script>
+</body>
+</html>

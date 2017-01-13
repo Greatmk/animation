@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //window.onload 是等到页面文档树加载  图片加载 及文件全部加载完之后才加载图片
+    //所以当只有图片的时候，若在图片下面获取图片的宽度的话，是获取不到的
+    //若在上面写script   必须写window.onload 才能获取到图片的属性
+    window.onload =function(){
+
+        var img = document.getElementById('img');
+        console.log(img.width);
+    }
+       
+    </script>
+    <img src="./images/03.gif" alt="" id="img" width="200px">
+    
+</body>
+</html>

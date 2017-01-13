@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 90px;
+            background-color: yellow;
+            border-top: 10px solid green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="奔跑到400" id="btn1">
+<input type="button" value="奔跑到800" id="btn2">
+<div id="nn"></div>
+
+<script>
+    var nn = document.getElementById("nn");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+
+    var timer = null;
+
+    btn1.onclick = function () {
+        animate(nn, 400);
+    }
+
+
+    btn2.onclick = function () {
+        animate(nn, 800);
+    }
+
+    //封装函数：能够让任意的对象 跑到 任意的位置
+    function animate(obj, target) {
+
+        //之前timer是一个全局变量,目的是为了每一次点击的时候,我的div只有一个timer
+        //现在就是把timer当成obj的一个属性
+        if(obj.timer) {
+            //说明已经开了一个定时器
+            clearInterval(obj.timer);
+            console.log("我清除了一个定时器"+obj.timer);
+            obj.timer = undefined;
+        }
+        //保证div永远只有一个定时器。在开启一个定时器之前，把前面的那个定时器给清除
+        obj.timer = setInterval(function () {
+            var leader = obj.offsetLeft;
+            var step = 10;
+
+            if(leader < target) {
+                leader = leader + step;
+                obj.style.left = leader + "px";
+            }else {
+                //清除定时器
+                clearInterval(obj.timer);
+                console.log("到终点了,我清除了一个定时器"+obj.timer);
+
+            }
+            console.log("代码还在执行中");
+
+        }, 15);
+        console.log("我开启了一个定时器:"+obj.timer);
+    }
+</script>
+
+</body>
+</html>

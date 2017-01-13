@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+
+            height: 100px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+<div id="box" style="width: 100px;"></div>
+
+<script>
+    var box = document.getElementById("box");
+    //1. style.width:只能获取行内的样式
+    //2. style.width获取到的是字符串格式，还带了px，如果要运算,还要parseInt
+    //3. style.width可以设置宽度，记得单位
+    //console.log(box.style.width);
+    //box.style.width = "200px";
+
+    //1. offsetWidth获取盒子自身的宽度
+    //2. offsetWidth获取的类型数值类型,直接可以匀速
+    //3. offsetWidth是一个只读属性,只能获取,不能设置
+    //console.log(box.offsetWidth);
+
+
+    //结论：获取盒子宽度的时候，用offsetWidth,设置宽度的时候，只能用style.width
+    //box.offsetWidth = 200;
+    box.style.width = 300 + 'px';
+    console.log(box.offsetWidth);
+</script>
+
+</body>
+</html>

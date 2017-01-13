@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #father {
+            width: 400px;
+            height: 400px;
+            background-color: hotpink;
+            position: relative;
+        }
+        
+        #son {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            padding: 10px;
+            border: 10px solid #000;
+            margin: 10px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="father" >
+    <div id="son" style="left: 100px;"></div>
+</div>
+<script>
+    var son = document.getElementById("son");
+    //1. style.left只能获取行内样式,获取的是left设置的样式值
+    //2. 获取到的是字符串
+    //3. style.left能够设置
+    console.log(son.style.left);
+    //son.style.left = "200px";
+
+
+
+    //1. offsetLeft获取的是盒子自身的左侧距离 offsetParent左侧的真实距离
+    //2. offsetLeft获取的是数值类型
+    //3. offsetLeft是一个只读属性，只能获取，不能设置
+    console.log(son.offsetLeft);
+    //son.offsetLeft = 200;
+
+
+    //结论：获取盒子left与top值：用offsetLeft 设置的时候只能用style.left
+</script>
+</body>
+</html>

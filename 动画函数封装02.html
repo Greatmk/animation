@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 90px;
+            background-color: yellow;
+            border-top: 10px solid green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="奔跑到400" id="btn1">
+<input type="button" value="奔跑到800" id="btn2">
+<div id="nn"></div>
+
+<script>
+    var nn = document.getElementById("nn");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+
+    var timer = null;
+
+    btn1.onclick = function () {
+        animate(nn, 400);
+    }
+
+
+    btn2.onclick = function () {
+        animate(nn, 800);
+    }
+
+    //封装函数：能够让任意的对象 跑到 任意的位置
+    function animate(obj, target) {
+
+        if(obj.timer) {
+            clearInterval(obj.timer);
+        }
+        obj.timer = setInterval(function () {
+            var leader = obj.offsetLeft;
+            var step = 7;
+            if(target < leader) {
+                step = - step;
+            }
+
+            //如果距离大于一步的时候，才跑
+            var instance = Math.abs(target - leader);
+            if(instance > Math.abs(step)) {
+                leader = leader + step;
+                obj.style.left = leader + "px";
+            }else {
+                //如果距离小于一步的时候，就不跑了
+                clearInterval(obj.timer);
+                //手动的直接把盒子放到目标的位置
+                obj.style.left = target + "px";
+            }
+
+        }, 15);
+    }
+</script>
+
+</body>
+</html>

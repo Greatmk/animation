@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #one {
+            position: relative;
+        }
+
+        #two {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="one">
+    <div id="two">
+        <div id="three"></div>
+    </div>
+</div>
+
+<script>
+    var three = document.getElementById("three");
+    //parentNode找的永远是亲爹
+    console.log(three.parentNode);
+
+    //offsetParent:距离自己最近的有定位的父元素
+    //offsetParent:找干爹 有定位，离自己最近
+    console.log(three.offsetParent);
+
+</script>
+
+</body>
+</html>

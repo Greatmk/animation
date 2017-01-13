@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text"/>
+<input type="button" value="点击获取短信验证码" id="btn"/>
+
+<script>
+    var btn = document.getElementById('btn');
+    var num = 5;
+    var timer = null;
+    //注册点击事件
+    btn.onclick = function(){
+        //点击之后，禁用value，即不能再次点了
+        this.disabled = true;
+        //设置一个定时器
+        timer = setInterval(function(){
+            //点击后，让秒数--;
+            num--;
+            //改变value里的值
+            btn.value = num + '秒钟之后可以再次发送';
+            //当秒数值减到0的时候，清除定时器
+            if(num == 0){
+                clearTimeout(timer);
+                //启用value
+                btn.disabled = false;
+                //还原以前的value值
+                btn.value = '点击获取短信验证码';
+                num = 5;
+            }
+
+
+        },1000);
+    }
+
+</script>
+</body>
+</html>

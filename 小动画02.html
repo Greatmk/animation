@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 90px;
+            background-color: yellow;
+            border-top: 10px solid green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="奔跑吧" id="btn">
+<div id="nn"></div>
+
+<script>
+    var nn = document.getElementById("nn");
+    var btn = document.getElementById("btn");
+
+    var timer = null;
+
+    btn.onclick = function () {
+        if(timer) {
+            clearInterval(timer);
+            console.log("我关闭了一个定时器："+timer);
+        }
+
+        //保证div永远只有一个定时器。在开启一个定时器之前，把前面的那个定时器给清除
+        timer = setInterval(function () {
+            var leader = nn.offsetLeft;
+            var step = 10;
+
+            if(leader < 800) {
+                leader = leader + step;
+                nn.style.left = leader + "px";
+            }else {
+                //清除定时器
+                clearInterval(timer);
+                console.log("关闭了一个定时器:"+timer);
+
+            }
+            console.log("代码还在执行中");
+
+        }, 15);
+        console.log("开启了一个定时器:" + timer);
+    }
+</script>
+
+</body>
+</html>

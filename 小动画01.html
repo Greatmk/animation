@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 90px;
+            background-color: yellow;
+            border-top: 10px solid green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="奔跑吧" id="btn">
+<div id="nn"></div>
+
+<script>
+    var nn = document.getElementById("nn");
+    //需求：点击按钮的时候,跑到400px的地方
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        //注意：想要让left有效果,一定要有定位
+        //注意2：left属性设置的时候，一定要带单位
+        //nn.style.left = "400px";
+
+        //leader = leader + step
+        //leader:盒子当前的位置
+        //step:盒子一次移动的距离
+        setInterval(function () {
+            var leader = nn.offsetLeft;
+            var step = 10;
+            leader = leader + step;
+            nn.style.left = leader + "px";
+        }, 15);
+    }
+</script>
+
+</body>
+</html>
